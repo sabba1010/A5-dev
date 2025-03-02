@@ -124,5 +124,3 @@ setInterval(updateDate, 1000);
 // 
 
 
-
-
