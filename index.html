@@ -66,7 +66,7 @@
     
                     <hr class="border-t-2 border-dashed border-gray-200 mt-4">
     
-                    <div class="grid grid-cols-3 mt-4 gap-4">
+                    <div id="mainbox" class="grid grid-cols-3 mt-4 gap-4 ">
                          <!-- box 1-->
                         <div class="task-div bg-blue-100 p-4 rounded-lg">
                             <div class="bg-white rounded-lg p-1 inline-block mb-2">
@@ -212,52 +212,6 @@
 
 
 
-<script>
-    const buttons = document.querySelectorAll('.task-btn');
-
-    for (const button of buttons) {
-        button.addEventListener('click', function() {
-            const taskDiv = this.closest('.task-div');
-            const taskName = this.innerText;
-            const alertResponse = confirm(`Are you sure you want to complete "${taskName}"?`);
-
-            if (alertResponse === true && taskName === "Completed") {
-                const taskDescription = taskDiv.querySelector('p').innerText;
-                const activityLog = document.getElementById('activity-log');
-                const newLog = document.createElement('div');
-                newLog.classList.add('p-2', 'bg-gray-100', 'rounded-lg', 'mb-4');
-                newLog.innerHTML = `<p>${taskDescription} task completed!</p>`;
-                const hr = activityLog.querySelector('hr');
-                if (hr) {
-                    activityLog.insertBefore(newLog, hr.nextSibling);
-                } else {
-                    activityLog.appendChild(newLog);
-                }
-
-
-                let taskCount = document.getElementById("task-count");
-                let currentTaskCount = parseInt(taskCount.innerText);
-                if (currentTaskCount > 0) {
-                    taskCount.innerText = currentTaskCount - 1;
-                }
-
-
-                let completedCount = document.getElementById("completed-count");
-                let currentCompletedCount = parseInt(completedCount.innerText);
-                completedCount.innerText = currentCompletedCount + 1;
-
-                this.disabled = true;
-                this.classList.add("bg-gray-400, rounded-lg");
-
-                taskDiv.classList.add('opacity-50');
-            }
-        });
-    }
-
-    document.getElementById('clear-history').addEventListener('click', () => {
-        document.getElementById('activity-log').innerHTML = '';
-    });
-</script>
 
 
 
@@ -267,7 +221,8 @@
 
 
 
-    
+
+    <script src="js/task.js"></script>
     <script src="js/asi.js"></script>
 <script src="js/time.js"></script>
 <script src="js/alert.js"></script>
