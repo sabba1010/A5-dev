@@ -1,12 +1,4 @@
-const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
-let i = 0;
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('btn-lst').addEventListener('click', function() {
-        document.body.style.backgroundColor = colors[i];
-        i = (i + 1) % colors.length;
-    });
-});
 
 
 // 
@@ -25,4 +17,14 @@ document.querySelectorAll('.task-btn').forEach(button => {
         newLog.innerHTML = `<p>${taskDescription}</p>`; 
         activityLog.appendChild(newLog); 
     });
+});
+
+
+        }
+    
+
+    
+document.getElementById('clear-history').addEventListener('click', () => {
+    document.getElementById('activity-log').innerHTML = '' ;
+
 });
